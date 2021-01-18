@@ -1,5 +1,6 @@
 package com.lockedme;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuOptions {
@@ -44,11 +45,35 @@ public class MenuOptions {
 				case 1:
 					break;
 				case 2:
+					System.out.println("Enter the name of the file to be deleted from \"main\" folder");
+					String fileToDelete = sc.next();
+					
+					List<String> filesToDelete = FileOperations.displayFileLocations(fileToDelete, "main");
+					
+					String deletionPrompt = "\nSelect index of which file to delete?"
+							+ "\n(Enter 0 if you want to delete all elements)";
+					System.out.println(deletionPrompt);
+				
+					int idx = sc.nextInt();
+					
+					if (idx != 0) {
+						FileOperations.deleteFileRecursively(filesToDelete.get(idx - 1));
+					} else {
+						
+						// If idx == 0, delete all files displayed for the name
+						for (String path : filesToDelete) {
+							FileOperations.deleteFileRecursively(path);
+						}
+					}
+					
+
 					break;
 				case 3:
 					System.out.println("Enter the name of the file to be searched from \"main\" folder");
 					String fileName = sc.next();
-					FileOperations.displayFileLocations(fileName, "./main");
+					FileOperations.displayFileLocations(fileName, "main");
+
+					
 					break;
 				case 4:
 					return;

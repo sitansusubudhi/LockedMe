@@ -19,7 +19,7 @@ public class LockedMeMain {
 
 				switch (input) {
 				case 1:
-					FileOperations.displayAllFiles("./main");
+					FileOperations.displayAllFiles("main");
 					break;
 				case 2:
 					MenuOptions.handleFileMenuOptions();

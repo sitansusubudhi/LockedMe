@@ -43,8 +43,15 @@ public class MenuOptions {
 				int input = sc.nextInt();
 				switch (input) {
 				case 1:
+					// File Add
+					System.out.println("Enter the name of the file to be added to the \"main\" folder");
+					String fileToAdd = sc.next();
+					
+					FileOperations.createFile(fileToAdd, sc);
+					
 					break;
 				case 2:
+					// File/Folder delete
 					System.out.println("Enter the name of the file to be deleted from \"main\" folder");
 					String fileToDelete = sc.next();
 					
@@ -69,6 +76,7 @@ public class MenuOptions {
 
 					break;
 				case 3:
+					// File/Folder Search
 					System.out.println("Enter the name of the file to be searched from \"main\" folder");
 					String fileName = sc.next();
 					FileOperations.displayFileLocations(fileName, "main");
@@ -76,8 +84,10 @@ public class MenuOptions {
 					
 					break;
 				case 4:
+					// Go to Previous menu
 					return;
 				case 5:
+					// Exit
 					System.out.println("Program exited successfully.");
 					running = false;
 					sc.close();

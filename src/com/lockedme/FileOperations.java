@@ -1,10 +1,15 @@
 package com.lockedme;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -122,5 +127,29 @@ public class FileOperations {
 			System.out.println("Failed to delete " + currFileName);
 		}
 
+	}
+
+	public static void createFile(String fileToAdd, Scanner sc) {
+		Path pathToFile = Paths.get("./main/" + fileToAdd);
+		try {
+			Files.createDirectories(pathToFile.getParent());
+			Files.createFile(pathToFile);
+			System.out.println(fileToAdd + " created successfully");
+			
+			System.out.println("Would you like to add some content to the file? (Y/N)");
+			String choice = sc.next().toLowerCase();
+			
+			sc.nextLine();
+			if (choice.equals("y")) {
+				System.out.println("\n\nInput content and press enter\n");
+				String content = sc.nextLine();
+				Files.write(pathToFile, content.getBytes());
+				System.out.println("Content written to file " + fileToAdd);
+			}
+			
+		} catch (IOException e) {
+			System.out.println("Failed to create file " + fileToAdd);
+			System.out.println(e.getClass().getName());
+		}
 	}
 }

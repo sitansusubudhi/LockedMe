@@ -60,14 +60,13 @@ Code designed to display the welcome screen. It displays:
 
 * The second option returns the details of the user interface such as options displaying the following:
 
-** Add a file to the existing directory list
+    * Add a file to the existing directory list
 
-** Delete a user specified file from the existing directory list
+    * Delete a user specified file from the existing directory list
 
-** Search a user specified file from the main directory
+    * Search a user specified file from the main directory
 
-
-** Option to navigate back to the main context
+    * Option to navigate back to the main context
 
 * There is a third option to close the application.
 

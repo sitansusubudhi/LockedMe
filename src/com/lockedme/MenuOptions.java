@@ -40,6 +40,8 @@ public class MenuOptions {
 		do {
 			try {
 				displayFileMenuOptions();
+				FileOperations.createMainFolderIfNotPresent("main");
+				
 				int input = sc.nextInt();
 				switch (input) {
 				case 1:
@@ -55,6 +57,7 @@ public class MenuOptions {
 					System.out.println("Enter the name of the file to be deleted from \"main\" folder");
 					String fileToDelete = sc.next();
 					
+					FileOperations.createMainFolderIfNotPresent("main");
 					List<String> filesToDelete = FileOperations.displayFileLocations(fileToDelete, "main");
 					
 					String deletionPrompt = "\nSelect index of which file to delete?"
@@ -79,6 +82,8 @@ public class MenuOptions {
 					// File/Folder Search
 					System.out.println("Enter the name of the file to be searched from \"main\" folder");
 					String fileName = sc.next();
+					
+					FileOperations.createMainFolderIfNotPresent("main");
 					FileOperations.displayFileLocations(fileName, "main");
 
 					
